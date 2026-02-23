@@ -1,20 +1,19 @@
-<?php include("jobs.php"); ?>
+<?php
+session_start();
+include("jobs.php");
+?>
+
 <!DOCTYPE html>
 <html>
 <head>
-    <title>HireNest - Job Portal</title>
-    <link rel="stylesheet" href="style.css">
+<title>HireNest</title>
+<link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-<header>
-    <h1>HireNest</h1>
-    <nav>
-        <a href="index.php">Home</a>
-        <a href="login.php">Login</a>
-        <a href="profile.php">Profile</a>
-    </nav>
-</header>
+<?php include("header.php"); ?>
+
+<div class="main-content <?php echo isset($_SESSION['user']) ? '' : 'blur'; ?>">
 
 <section class="search-bar">
     <input type="text" id="searchInput" placeholder="Search job...">
@@ -36,6 +35,21 @@
     </div>
 <?php } ?>
 </section>
+
+</div>
+
+<?php if(!isset($_SESSION['user'])){ ?>
+<div class="login-modal">
+    <div class="login-box">
+        <h2>Login</h2>
+        <form method="post" action="login.php">
+            <input type="email" name="email" placeholder="Email" required>
+            <input type="password" name="password" placeholder="Password" required>
+            <button type="submit">Login</button>
+        </form>
+    </div>
+</div>
+<?php } ?>
 
 <script src="script.js"></script>
 </body>

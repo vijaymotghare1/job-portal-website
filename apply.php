@@ -8,6 +8,7 @@ if($_SERVER["REQUEST_METHOD"]=="POST"){
 <!DOCTYPE html>
 <html>
 <head>
+    <?php include("header.php"); ?>
 <title>Apply Job</title>
 <link rel="stylesheet" href="style.css">
 </head>
