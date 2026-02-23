@@ -1,1 +1,42 @@
-<p>hello </p>
+<?php include("jobs.php"); ?>
+<!DOCTYPE html>
+<html>
+<head>
+    <title>HireNest - Job Portal</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header>
+    <h1>HireNest</h1>
+    <nav>
+        <a href="index.php">Home</a>
+        <a href="login.php">Login</a>
+        <a href="profile.php">Profile</a>
+    </nav>
+</header>
+
+<section class="search-bar">
+    <input type="text" id="searchInput" placeholder="Search job...">
+    <select id="sortSelect">
+        <option value="">Sort By</option>
+        <option value="title">Title</option>
+        <option value="location">Location</option>
+    </select>
+</section>
+
+<section class="job-container" id="jobContainer">
+<?php foreach($jobs as $job){ ?>
+    <div class="job-card" data-title="<?php echo $job['title']; ?>" data-location="<?php echo $job['location']; ?>">
+        <h3><?php echo $job['title']; ?></h3>
+        <p><?php echo $job['company']; ?></p>
+        <p><?php echo $job['location']; ?></p>
+        <p><?php echo $job['salary']; ?></p>
+        <a href="apply.php?id=<?php echo $job['id']; ?>" class="btn">Apply</a>
+    </div>
+<?php } ?>
+</section>
+
+<script src="script.js"></script>
+</body>
+</html>
